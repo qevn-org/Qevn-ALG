@@ -51,7 +51,7 @@ if "is_running" not in st.session_state:
 # Sidebar Branding & Quick Stats
 with st.sidebar:
     bolt_icon_side = get_icon_svg("bolt", size=20, color="#818cf8")
-    st.markdown(f"### {bolt_icon_side} QEVN INTELLIGENCE", unsafe_allow_html=True)
+    st.markdown(f'<div style="font-size: 1.2rem; font-weight: 700; color: #f8fafc; margin-bottom: 4px; display: flex; align-items: center; gap: 8px;">{bolt_icon_side} QEVN INTELLIGENCE</div>', unsafe_allow_html=True)
     st.caption("Autonomous LinkedIn Public Signal Engine")
     st.markdown("---")
 
@@ -76,7 +76,7 @@ st.markdown(
 # Command Center Input Form in an elegant container card
 with st.container(border=True):
     target_icon = get_icon_svg("target", size=18, color="#818cf8")
-    st.markdown(f"#### {target_icon} Natural Language Discovery Query", unsafe_allow_html=True)
+    st.markdown(f'<div style="font-size: 1.05rem; font-weight: 600; color: #f8fafc; margin-bottom: 10px; display: flex; align-items: center; gap: 8px;">{target_icon} Natural Language Discovery Query</div>', unsafe_allow_html=True)
     current_prompt_val = st.session_state.get(
         "saved_prompt",
         "Find clinics and healthcare companies hiring dentists during the last 7 days.",
@@ -192,7 +192,7 @@ if opps:
 
     st.markdown("<div style='height: 12px;'></div>", unsafe_allow_html=True)
     target_header_icon = get_icon_svg("target", size=22, color="#818cf8")
-    st.markdown(f"### {target_header_icon} Discovered Commercial Opportunities ({len(opps)})", unsafe_allow_html=True)
+    st.markdown(f'<div style="font-size: 1.25rem; font-weight: 700; color: #f8fafc; margin: 24px 0 16px 0; display: flex; align-items: center; gap: 8px;">{target_header_icon} Discovered Commercial Opportunities ({len(opps)})</div>', unsafe_allow_html=True)
 
     for opp in opps:
         render_opportunity_card(opp, posts, key_prefix="home")

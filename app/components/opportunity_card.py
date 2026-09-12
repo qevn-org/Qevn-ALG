@@ -55,11 +55,11 @@ def render_opportunity_card(
         c_left, c_right = st.columns([1.5, 1.3], gap="large")
 
         with c_left:
-            st.markdown(f"##### {target_icon} Strategic Opportunity Intelligence", unsafe_allow_html=True)
+            st.markdown(f'<div style="font-size: 0.95rem; font-weight: 700; color: #f8fafc; margin-bottom: 8px; display: flex; align-items: center; gap: 6px;">{target_icon} Strategic Opportunity Intelligence</div>', unsafe_allow_html=True)
             for bullet in opp.why_detected:
                 st.markdown(f"&bull; {bullet}")
 
-            st.markdown(f"**{bolt_icon} Urgency Window (Why Now):** {opp.why_now}", unsafe_allow_html=True)
+            st.markdown(f'<div style="margin: 8px 0; color: #cbd5e1;"><strong style="color: #f8fafc; display: inline-flex; align-items: center; gap: 4px;">{bolt_icon} Urgency Window (Why Now):</strong> {opp.why_now}</div>', unsafe_allow_html=True)
 
             st.markdown(
                 f"""
@@ -72,7 +72,7 @@ def render_opportunity_card(
             )
 
         with c_right:
-            st.markdown(f"##### {users_icon} Key Stakeholders & Decision Makers", unsafe_allow_html=True)
+            st.markdown(f'<div style="font-size: 0.95rem; font-weight: 700; color: #f8fafc; margin-bottom: 8px; display: flex; align-items: center; gap: 6px;">{users_icon} Key Stakeholders & Decision Makers</div>', unsafe_allow_html=True)
             if opp.contacts:
                 for c in opp.contacts:
                     badge_class = (

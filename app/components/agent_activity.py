@@ -8,7 +8,7 @@ from app.utils.icons import get_icon_svg
 def render_agent_activity(events: list[dict], is_running: bool = False) -> None:
     """Render structured agent node events."""
     bolt_icon = get_icon_svg("bolt", size=20, color="#38bdf8")
-    st.markdown(f"### {bolt_icon}Live Agent Activity", unsafe_allow_html=True)
+    st.markdown(f'<div style="font-size: 1.25rem; font-weight: 700; color: #f8fafc; margin-bottom: 12px; display: flex; align-items: center; gap: 8px;">{bolt_icon} Live Agent Activity</div>', unsafe_allow_html=True)
 
     if not events and not is_running:
         st.info("No active discovery session. Enter a prompt above and click **RUN INTELLIGENCE** to start.")
@@ -39,17 +39,17 @@ def render_agent_activity(events: list[dict], is_running: bool = False) -> None:
                 status = ev.get("status", "completed")
                 if status == "completed":
                     st.markdown(
-                        f"**<span style='color:#10b981;'>[DONE]</span> {icon_svg}{node_name}** &mdash; <span style='color:#94a3b8; font-style:italic;'>{ev.get('summary')}</span>",
+                        f"<span style='font-weight:600;'><span style='color:#10b981;'>[DONE]</span> {icon_svg}{node_name}</span> &mdash; <span style='color:#94a3b8; font-style:italic;'>{ev.get('summary')}</span>",
                         unsafe_allow_html=True,
                     )
                 elif status == "failed":
                     st.markdown(
-                        f"**<span style='color:#ef4444;'>[FAIL]</span> {icon_svg}{node_name}** &mdash; <span style='color:#94a3b8; font-style:italic;'>{ev.get('summary')}</span>",
+                        f"<span style='font-weight:600;'><span style='color:#ef4444;'>[FAIL]</span> {icon_svg}{node_name}</span> &mdash; <span style='color:#94a3b8; font-style:italic;'>{ev.get('summary')}</span>",
                         unsafe_allow_html=True,
                     )
                 else:
                     st.markdown(
-                        f"**<span style='color:#f59e0b;'>[BUSY]</span> {icon_svg}{node_name}** &mdash; <span style='color:#94a3b8; font-style:italic;'>{ev.get('summary')}</span>",
+                        f"<span style='font-weight:600;'><span style='color:#f59e0b;'>[BUSY]</span> {icon_svg}{node_name}</span> &mdash; <span style='color:#94a3b8; font-style:italic;'>{ev.get('summary')}</span>",
                         unsafe_allow_html=True,
                     )
             elif is_running:
@@ -63,17 +63,17 @@ def render_agent_activity(events: list[dict], is_running: bool = False) -> None:
                 status = ev.get("status", "completed")
                 if status == "completed":
                     st.markdown(
-                        f"**<span style='color:#10b981;'>[DONE]</span> {icon_svg}{node_name}** &mdash; <span style='color:#94a3b8; font-style:italic;'>{ev.get('summary')}</span>",
+                        f"<span style='font-weight:600;'><span style='color:#10b981;'>[DONE]</span> {icon_svg}{node_name}</span> &mdash; <span style='color:#94a3b8; font-style:italic;'>{ev.get('summary')}</span>",
                         unsafe_allow_html=True,
                     )
                 elif status == "failed":
                     st.markdown(
-                        f"**<span style='color:#ef4444;'>[FAIL]</span> {icon_svg}{node_name}** &mdash; <span style='color:#94a3b8; font-style:italic;'>{ev.get('summary')}</span>",
+                        f"<span style='font-weight:600;'><span style='color:#ef4444;'>[FAIL]</span> {icon_svg}{node_name}</span> &mdash; <span style='color:#94a3b8; font-style:italic;'>{ev.get('summary')}</span>",
                         unsafe_allow_html=True,
                     )
                 else:
                     st.markdown(
-                        f"**<span style='color:#f59e0b;'>[BUSY]</span> {icon_svg}{node_name}** &mdash; <span style='color:#94a3b8; font-style:italic;'>{ev.get('summary')}</span>",
+                        f"<span style='font-weight:600;'><span style='color:#f59e0b;'>[BUSY]</span> {icon_svg}{node_name}</span> &mdash; <span style='color:#94a3b8; font-style:italic;'>{ev.get('summary')}</span>",
                         unsafe_allow_html=True,
                     )
             elif is_running:

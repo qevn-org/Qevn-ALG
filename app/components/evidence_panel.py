@@ -13,7 +13,7 @@ def render_evidence_panel(opp: Opportunity, all_posts: list[LinkedInPost]) -> No
     evidence_posts = [post_map[pid] for pid in opp.evidence_post_ids if pid in post_map]
 
     file_icon = get_icon_svg("file-text", size=18, color="#38bdf8")
-    st.markdown(f"#### {file_icon}Source Evidence ({len(evidence_posts)} posts)", unsafe_allow_html=True)
+    st.markdown(f'<div style="font-size: 1.1rem; font-weight: 600; color: #f8fafc; margin-bottom: 8px; display: flex; align-items: center; gap: 6px;">{file_icon} Source Evidence ({len(evidence_posts)} posts)</div>', unsafe_allow_html=True)
 
     if not evidence_posts:
         st.write("No direct post records attached.")

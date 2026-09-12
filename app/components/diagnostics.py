@@ -18,7 +18,7 @@ def render_diagnostics(state: dict) -> None:
         search_plan = state.get("search_plan")
         if search_plan:
             search_icon = get_icon_svg("search", size=16, color="#38bdf8")
-            st.markdown(f"##### {search_icon}Generated Query Set:", unsafe_allow_html=True)
+            st.markdown(f'<div style="font-size: 0.95rem; font-weight: 600; color: #f8fafc; margin-bottom: 8px; display: flex; align-items: center; gap: 6px;">{search_icon} Generated Query Set:</div>', unsafe_allow_html=True)
             queries = getattr(search_plan, "queries", [])
             st.write(queries)
             if hasattr(search_plan, "rationale") and search_plan.rationale:
@@ -36,6 +36,6 @@ def render_diagnostics(state: dict) -> None:
                 st.write(f"- {w}")
 
         stream_icon = get_icon_svg("file-text", size=16, color="#38bdf8")
-        st.markdown(f"##### {stream_icon}Node Event Stream:", unsafe_allow_html=True)
+        st.markdown(f'<div style="font-size: 0.95rem; font-weight: 600; color: #f8fafc; margin-bottom: 8px; display: flex; align-items: center; gap: 6px;">{stream_icon} Node Event Stream:</div>', unsafe_allow_html=True)
         events = state.get("agent_events", [])
         st.json(events)

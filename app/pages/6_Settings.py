@@ -47,7 +47,7 @@ c1, c2 = st.columns([1, 1], gap="large")
 
 with c1:
     with st.container(border=True):
-        st.markdown(f"#### {shield_icon}Secure Credential Status", unsafe_allow_html=True)
+        st.markdown(f'<div style="font-size: 1.1rem; font-weight: 600; color: #f8fafc; margin-bottom: 8px; display: flex; align-items: center; gap: 6px;">{shield_icon} Secure Credential Status</div>', unsafe_allow_html=True)
         st.caption("API keys are securely resolved from .env and masked at all times.")
 
         st.markdown(f"- **OpenAI Key:** `{masked['openai_configured']}`")
@@ -60,14 +60,14 @@ with c1:
     st.markdown("<div style='height: 10px;'></div>", unsafe_allow_html=True)
 
     with st.container(border=True):
-        st.markdown(f"#### {guard_icon}Runtime Guardrails & Search Limits", unsafe_allow_html=True)
+        st.markdown(f'<div style="font-size: 1.1rem; font-weight: 600; color: #f8fafc; margin-bottom: 8px; display: flex; align-items: center; gap: 6px;">{guard_icon} Runtime Guardrails & Search Limits</div>', unsafe_allow_html=True)
         st.markdown(f"- **Max Search Queries:** `{masked['max_search_queries']}`")
         st.markdown(f"- **Max Results Per Discovery:** `{masked['max_results_per_run']}`")
         st.markdown(f"- **Max Deep Research Items:** `{masked['max_deep_research_items']}`")
 
 with c2:
     with st.container(border=True):
-        st.markdown(f"#### {scale_icon}Scoring Model & Temperature Bands", unsafe_allow_html=True)
+        st.markdown(f'<div style="font-size: 1.1rem; font-weight: 600; color: #f8fafc; margin-bottom: 8px; display: flex; align-items: center; gap: 6px;">{scale_icon} Scoring Model & Temperature Bands</div>', unsafe_allow_html=True)
         st.caption("Multi-dimensional weights applied during qualification:")
 
         st.slider("Hiring Intent Weight", 0.0, 1.0, settings.weight_hiring_intent, disabled=True)
@@ -77,17 +77,17 @@ with c2:
         st.slider("Urgency Weight", 0.0, 1.0, settings.weight_urgency, disabled=True)
         st.slider("Evidence Confidence Weight", 0.0, 1.0, settings.weight_evidence_confidence, disabled=True)
 
-        st.markdown(f"##### {temp_icon}Temperature Cutoffs", unsafe_allow_html=True)
-        st.markdown(f"- {flame_icon}**HOT:** `>= {settings.hot_threshold} points`", unsafe_allow_html=True)
-        st.markdown(f"- {bolt_icon}**WARM:** `>= {settings.qualification_threshold} points`", unsafe_allow_html=True)
-        st.markdown(f"- {snow_icon}**LOW:** `< {settings.qualification_threshold} points`", unsafe_allow_html=True)
+        st.markdown(f'<div style="font-size: 0.95rem; font-weight: 600; color: #f8fafc; margin: 12px 0 8px 0; display: flex; align-items: center; gap: 6px;">{temp_icon} Temperature Cutoffs</div>', unsafe_allow_html=True)
+        st.markdown(f'<div style="display:flex; align-items:center; gap:6px; margin:4px 0;">{flame_icon}<strong>HOT:</strong> &ge; {settings.hot_threshold} points</div>', unsafe_allow_html=True)
+        st.markdown(f'<div style="display:flex; align-items:center; gap:6px; margin:4px 0;">{bolt_icon}<strong>WARM:</strong> &ge; {settings.qualification_threshold} points</div>', unsafe_allow_html=True)
+        st.markdown(f'<div style="display:flex; align-items:center; gap:6px; margin:4px 0;">{snow_icon}<strong>LOW:</strong> &lt; {settings.qualification_threshold} points</div>', unsafe_allow_html=True)
 
 st.markdown("<div style='height: 14px;'></div>", unsafe_allow_html=True)
 s_col1, s_col2 = st.columns([1, 1], gap="large")
 
 with s_col1:
     with st.container(border=True):
-        st.markdown(f"#### {cloud_icon}Supabase Cloud Synchronization", unsafe_allow_html=True)
+        st.markdown(f'<div style="font-size: 1.1rem; font-weight: 600; color: #f8fafc; margin-bottom: 8px; display: flex; align-items: center; gap: 6px;">{cloud_icon} Supabase Cloud Synchronization</div>', unsafe_allow_html=True)
         st.caption("Synchronize local SQLite leads to your remote Supabase PostgreSQL database.")
         if st.button("Push Local Leads to Supabase", use_container_width=True):
             with st.spinner("Connecting to Supabase and syncing records..."):
@@ -107,7 +107,7 @@ with s_col1:
 
 with s_col2:
     with st.container(border=True):
-        st.markdown(f"#### {diag_icon}Diagnostic Self-Test", unsafe_allow_html=True)
+        st.markdown(f'<div style="font-size: 1.1rem; font-weight: 600; color: #f8fafc; margin-bottom: 8px; display: flex; align-items: center; gap: 6px;">{diag_icon} Diagnostic Self-Test</div>', unsafe_allow_html=True)
         st.caption("Validate state graph compilation and retrieval services.")
         if st.button("Run System Diagnostic Check", use_container_width=True):
             with st.spinner("Verifying subsystems..."):

@@ -99,7 +99,8 @@ def get_icon_svg(
 
         style_attr = f'style="vertical-align: -3px; display: inline-block; margin-right: 5px; {extra_style}"'
         raw = raw.replace("<svg", f"<svg {style_attr}")
-        rendered = raw.strip()
+        # Strip newlines and collapse whitespace to prevent breaking Markdown headings and inline blocks
+        rendered = re.sub(r"\s+", " ", raw).strip()
         _SVG_CACHE[cache_key] = rendered
         return rendered
     except Exception:

@@ -90,7 +90,7 @@ clip_icon = get_icon_svg("clipboard-list", size=20, color="#818cf8")
 
 with t_col1:
     with st.container(border=True):
-        st.markdown(f"#### {chart_icon}Model Evaluation & Diagnostic Metrics", unsafe_allow_html=True)
+        st.markdown(f'<div style="font-size: 1.15rem; font-weight: 700; color: #f8fafc; margin-bottom: 12px; display: flex; align-items: center; gap: 8px;">{chart_icon} Model Evaluation & Diagnostic Metrics</div>', unsafe_allow_html=True)
         if metrics.mode == "Trained" and metrics.accuracy is not None:
             m_c1, m_c2, m_c3, m_c4 = st.columns(4)
             m_c1.metric("Validation Accuracy", f"{metrics.accuracy * 100:.1f}%")
@@ -115,7 +115,7 @@ with t_col1:
 
 with t_col2:
     with st.container(border=True):
-        st.markdown(f"#### {settings_icon}Train / Retrain Model", unsafe_allow_html=True)
+        st.markdown(f'<div style="font-size: 1.15rem; font-weight: 700; color: #f8fafc; margin-bottom: 12px; display: flex; align-items: center; gap: 8px;">{settings_icon} Train / Retrain Model</div>', unsafe_allow_html=True)
         st.write("Trigger supervised retraining on collected outcome dataset.")
         if st.button("Train Supervised Model", type="primary", use_container_width=True):
             with st.spinner("Evaluating dataset and training model..."):
@@ -129,7 +129,7 @@ with t_col2:
 st.markdown("<div style='height: 14px;'></div>", unsafe_allow_html=True)
 
 # Labeled Outcome History
-st.markdown(f"### {clip_icon}Labeled Feedback Audit Trail", unsafe_allow_html=True)
+st.markdown(f'<div style="font-size: 1.25rem; font-weight: 700; color: #f8fafc; margin: 24px 0 16px 0; display: flex; align-items: center; gap: 8px;">{clip_icon} Labeled Feedback Audit Trail</div>', unsafe_allow_html=True)
 if outcomes:
     outcomes_flat = [
         {

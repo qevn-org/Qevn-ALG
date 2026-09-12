@@ -112,7 +112,7 @@ st.markdown("<div style='height: 14px;'></div>", unsafe_allow_html=True)
 
 # Filter Controls Section in an Executive Card
 with st.container(border=True):
-    st.markdown(f"##### {search_icon}Pipeline Search & Multi-Dimensional Filters", unsafe_allow_html=True)
+    st.markdown(f'<div style="font-size: 0.95rem; font-weight: 600; color: #f8fafc; margin-bottom: 12px; display: flex; align-items: center; gap: 6px;">{search_icon} Pipeline Search & Multi-Dimensional Filters</div>', unsafe_allow_html=True)
     f_col1, f_col2, f_col3, f_col4 = st.columns([3, 2, 2, 2])
     search_query = f_col1.text_input(
         "Search Leads",
@@ -279,7 +279,7 @@ st.markdown("---")
 
 # Lead Detail Dossier / Profile Viewer
 clip_icon = get_icon_svg("clipboard-list", size=20, color="#818cf8")
-st.markdown(f"### {clip_icon}Lead Intelligence Dossier & Strategic Outreach", unsafe_allow_html=True)
+st.markdown(f'<div style="font-size: 1.25rem; font-weight: 700; color: #f8fafc; margin: 24px 0 16px 0; display: flex; align-items: center; gap: 8px;">{clip_icon} Lead Intelligence Dossier & Strategic Outreach</div>', unsafe_allow_html=True)
 
 lead_options = {
     f"[{lead.temperature}] {lead.company.name} — {lead.person.name} ({lead.score:.1f} pts)": lead.id
@@ -331,7 +331,7 @@ if selected_label:
             bolt_icon = get_icon_svg("bolt", size=18, color="#fb923c")
 
             with d_col1:
-                st.markdown(f"#### {target_icon}Strategic Intelligence", unsafe_allow_html=True)
+                st.markdown(f'<div style="font-size: 1.05rem; font-weight: 600; color: #f8fafc; margin-bottom: 8px; display: flex; align-items: center; gap: 6px;">{target_icon} Strategic Intelligence</div>', unsafe_allow_html=True)
                 st.markdown(f"**Why This Lead:**\n{sel_lead.enrichment.why_this_lead or ', '.join(sel_lead.why_detected)}")
                 st.markdown(f"**What They Need (Requirement):**\n`{sel_lead.intent.detected_requirement}` &mdash; {sel_lead.enrichment.business_need}")
                 st.markdown(f"**Urgency Window (Why Now):**\n{sel_lead.enrichment.why_now or sel_lead.why_now or 'Active public hiring window.'}")
@@ -348,14 +348,14 @@ if selected_label:
                     unsafe_allow_html=True,
                 )
 
-                st.markdown(f"#### {bldg_icon}Company Profile", unsafe_allow_html=True)
+                st.markdown(f'<div style="font-size: 1.05rem; font-weight: 600; color: #f8fafc; margin: 16px 0 8px 0; display: flex; align-items: center; gap: 6px;">{bldg_icon} Company Profile</div>', unsafe_allow_html=True)
                 st.markdown(f"- **Website:** [{sel_lead.company.website or 'Not available'}]({sel_lead.company.website or '#'})")
                 st.markdown(f"- **Company Size:** {sel_lead.company.company_size}")
                 st.markdown(f"- **Tech Stack Detected:** `{', '.join(sel_lead.company.tech_stack) if sel_lead.company.tech_stack else 'Active Engineering'}`")
                 st.markdown(f"- **Description:** {sel_lead.company.description or 'Operating commercial entity'}")
 
             with d_col2:
-                st.markdown(f"#### {phone_icon}Discovered Contacts & Channels", unsafe_allow_html=True)
+                st.markdown(f'<div style="font-size: 1.05rem; font-weight: 600; color: #f8fafc; margin-bottom: 8px; display: flex; align-items: center; gap: 6px;">{phone_icon} Discovered Contacts & Channels</div>', unsafe_allow_html=True)
                 if sel_lead.contacts:
                     for c in sel_lead.contacts:
                         c_badge = (
@@ -369,7 +369,7 @@ if selected_label:
                 else:
                     st.info("No direct contact discovered yet.")
 
-                st.markdown(f"#### {file_icon}Source Evidence", unsafe_allow_html=True)
+                st.markdown(f'<div style="font-size: 1.05rem; font-weight: 600; color: #f8fafc; margin: 16px 0 8px 0; display: flex; align-items: center; gap: 6px;">{file_icon} Source Evidence</div>', unsafe_allow_html=True)
                 st.markdown(f"**Evidence Citations:** {len(sel_lead.evidence)} public post(s)")
                 if sel_lead.source.raw_post_content:
                     st.text_area("Original LinkedIn Post Text", value=sel_lead.source.raw_post_content, height=130, disabled=True)
@@ -378,7 +378,7 @@ if selected_label:
 
                 st.markdown("<div style='height: 12px;'></div>", unsafe_allow_html=True)
                 # Feedback Loop Actions Section
-                st.markdown(f"#### {bolt_icon}Pipeline Feedback Actions (ML Training)", unsafe_allow_html=True)
+                st.markdown(f'<div style="font-size: 1.05rem; font-weight: 600; color: #f8fafc; margin-bottom: 8px; display: flex; align-items: center; gap: 6px;">{bolt_icon} Pipeline Feedback Actions (ML Training)</div>', unsafe_allow_html=True)
                 st.caption("Recording outcomes refines the supervised machine learning scoring model.")
 
                 act1, act2, act3, act4, act5 = st.columns(5)

@@ -31,7 +31,7 @@ search_icon = get_icon_svg("search", size=20, color="#38bdf8")
 chev_icon = get_icon_svg("chevron-right", size=14, color="#818cf8")
 
 with w1:
-    st.markdown(f"### {bldg_icon}Monitored Companies", unsafe_allow_html=True)
+    st.markdown(f'<div style="font-size: 1.15rem; font-weight: 700; color: #f8fafc; margin-bottom: 12px; display: flex; align-items: center; gap: 8px;">{bldg_icon} Monitored Companies</div>', unsafe_allow_html=True)
     if "watchlist" not in st.session_state:
         st.session_state["watchlist"] = []
 
@@ -53,14 +53,14 @@ with w1:
             st.rerun()
 
 with w2:
-    st.markdown(f"### {search_icon}Saved Search Strategies", unsafe_allow_html=True)
+    st.markdown(f'<div style="font-size: 1.15rem; font-weight: 700; color: #f8fafc; margin-bottom: 12px; display: flex; align-items: center; gap: 8px;">{search_icon} Saved Search Strategies</div>', unsafe_allow_html=True)
     saved_strategies = [
         "Engineering Hiring in India (CTO/VP Eng)",
         "Fintech Scaleups series B Backend Hiring",
         "GenAI Infrastructure Engineers Bangalore",
     ]
     for s in saved_strategies:
-        st.markdown(f"{chev_icon} **{s}**", unsafe_allow_html=True)
+        st.markdown(f'<div style="display: flex; align-items: center; gap: 6px; margin: 6px 0;">{chev_icon} <strong>{s}</strong></div>', unsafe_allow_html=True)
 
     st.markdown("<br>", unsafe_allow_html=True)
     st.info("Scheduled Automation: The graph architecture is ready for automated recurring cron triggers once persistent storage is enabled.")
