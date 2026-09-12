@@ -10,9 +10,8 @@ for p in (str(SRC_DIR), str(ROOT_DIR)):
         sys.path.insert(0, p)
 
 import streamlit as st
-from pytablericons import OutlineIcon
 
-from app.utils.icons import get_icon_svg, get_tabler_image
+from app.utils.icons import OutlineIcon, get_icon_svg, get_tabler_image
 from linkedin_intelligence.config.settings import get_settings
 
 settings_img = get_tabler_image(OutlineIcon.SETTINGS, size=32)

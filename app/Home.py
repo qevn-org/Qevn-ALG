@@ -12,7 +12,6 @@ for p in (str(SRC_DIR), str(ROOT_DIR)):
         sys.path.insert(0, p)
 
 import streamlit as st
-from pytablericons import OutlineIcon, TablerIcons
 
 try:
     from app.components.agent_activity import render_agent_activity
@@ -23,7 +22,7 @@ except ModuleNotFoundError:
     from components.diagnostics import render_diagnostics  # type: ignore[no-redef]
     from components.opportunity_card import render_opportunity_card  # type: ignore[no-redef]
 
-from app.utils.icons import get_icon_svg
+from app.utils.icons import OutlineIcon, TablerIcons, get_icon_svg
 from linkedin_intelligence.config.settings import get_settings
 from linkedin_intelligence.db.repository import get_lead_repository
 from linkedin_intelligence.main import run_discovery

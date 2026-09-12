@@ -8,9 +8,8 @@ if str(ROOT_DIR) not in sys.path:
     sys.path.insert(0, str(ROOT_DIR))
 
 import streamlit as st
-from pytablericons import OutlineIcon
 
-from app.utils.icons import get_icon_svg, get_tabler_image
+from app.utils.icons import OutlineIcon, get_icon_svg, get_tabler_image
 
 book_img = get_tabler_image(OutlineIcon.BOOKMARK, size=32)
 st.set_page_config(page_title="Watchlists | QEVN Intelligence", page_icon=book_img or "Q", layout="wide")

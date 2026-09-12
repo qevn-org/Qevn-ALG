@@ -10,10 +10,9 @@ for p in (str(SRC_DIR), str(ROOT_DIR)):
         sys.path.insert(0, p)
 
 import streamlit as st
-from pytablericons import OutlineIcon
 
 from app.components.opportunity_card import render_opportunity_card
-from app.utils.icons import get_icon_svg, get_tabler_image
+from app.utils.icons import OutlineIcon, get_icon_svg, get_tabler_image
 from linkedin_intelligence.db.repository import get_lead_repository
 from linkedin_intelligence.models.linkedin import LinkedInPost
 from linkedin_intelligence.models.opportunities import Contact, Opportunity, ScoreBreakdown

@@ -12,9 +12,8 @@ for p in (str(SRC_DIR), str(ROOT_DIR)):
 
 import pandas as pd
 import streamlit as st
-from pytablericons import OutlineIcon
 
-from app.utils.icons import get_icon_svg, get_tabler_image
+from app.utils.icons import OutlineIcon, get_icon_svg, get_tabler_image
 from linkedin_intelligence.db.repository import get_lead_repository
 from linkedin_intelligence.services.ml_scoring import get_ml_scoring_service
 

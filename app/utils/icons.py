@@ -1,31 +1,68 @@
-"""Tabler SVG icon provider using pytablericons."""
+"""Tabler SVG icon provider using bundled local SVG assets."""
 
 import re
+from enum import Enum
 from pathlib import Path
 from typing import Any
 
-import pytablericons
-from pytablericons import OutlineIcon, TablerIcons
+# Resolve bundled SVG icons directly within the app assets
+ASSETS_DIR = Path(__file__).resolve().parent.parent / "assets" / "icons"
+OUTLINE_DIR = ASSETS_DIR / "outline"
+FILLED_DIR = ASSETS_DIR / "filled"
 
-OUTLINE_DIR = Path(pytablericons.__file__).parent / "icons" / "outline"
-FILLED_DIR = Path(pytablericons.__file__).parent / "icons" / "filled"
+# Fallback to pytablericons if installed and assets missing
+if not OUTLINE_DIR.exists():
+    try:
+        import pytablericons
+
+        OUTLINE_DIR = Path(pytablericons.__file__).parent / "icons" / "outline"
+        FILLED_DIR = Path(pytablericons.__file__).parent / "icons" / "filled"
+    except Exception:
+        pass
 
 _SVG_CACHE: dict[str, str] = {}
 _IMG_CACHE: dict[str, Any] = {}
 
 
-def get_tabler_image(icon: OutlineIcon, size: int = 32):
-    """Load a PIL Image suitable for Streamlit page_icon."""
-    key = f"{icon.name}_{size}"
-    if key in _IMG_CACHE:
-        return _IMG_CACHE[key]
-    try:
-        img = TablerIcons.load(icon, size=size)
-        _IMG_CACHE[key] = img
-        return img
-    except Exception:
-        return None
+class OutlineIcon(str, Enum):
+    """Common Tabler Outline Icon names."""
 
+    BOLT = "bolt"
+    TARGET = "target"
+    DATABASE = "database"
+    ACTIVITY = "activity"
+    BOOKMARK = "bookmark"
+    BRAIN = "brain"
+    SETTINGS = "settings"
+    SEARCH = "search"
+    USERS = "users"
+    FLAME = "flame"
+    BUILDING = "building"
+    MAIL = "mail"
+    PHONE = "phone"
+
+
+class TablerIcons:
+    """Loader helper compatible with pytablericons API."""
+
+    @staticmethod
+    def load(icon: Any, size: int = 32) -> str:
+        return get_tabler_image(icon, size)
+
+
+def get_tabler_image(icon: Any, size: int = 32) -> str:
+    """Load an icon path suitable for Streamlit page_icon."""
+    if hasattr(icon, "value"):
+        name = str(icon.value).lower().replace("_", "-")
+    elif hasattr(icon, "name"):
+        name = str(icon.name).lower().replace("_", "-")
+    else:
+        name = str(icon).lower().replace("_", "-")
+
+    svg_path = OUTLINE_DIR / f"{name}.svg"
+    if svg_path.exists():
+        return str(svg_path)
+    return ""
 
 
 def get_icon_svg(
@@ -45,7 +82,6 @@ def get_icon_svg(
     svg_path = target_dir / f"{name}.svg"
 
     if not svg_path.exists():
-        # Fallback to outline if filled requested but not present
         svg_path = OUTLINE_DIR / f"{name}.svg"
         if not svg_path.exists():
             return ""
