@@ -1,0 +1,14 @@
+{
+  "mode": "Cold Start",
+  "status_message": "Cold-start mode \u2014 insufficient historical labels (0/20 collected)",
+  "algorithm": "Hybrid Weighted Engine",
+  "training_samples": 0,
+  "positive_samples": 0,
+  "negative_samples": 0,
+  "accuracy": null,
+  "precision": null,
+  "recall": null,
+  "roc_auc": null,
+  "last_trained": null,
+  "feature_importances": null
+}
