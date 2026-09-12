@@ -1,4 +1,4 @@
-"""App package and Vercel entrypoint re-export."""
+"""App main entrypoint for Vercel."""
 
 from index import app, application
 
